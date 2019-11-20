@@ -54,4 +54,9 @@ dependencies {
     //firebase
     implementation 'com.google.firebase:firebase-auth:19.1.0'
     implementation 'com.google.firebase:firebase-firestore:21.3.0'
+
+    // TODO: add SDKs for desired Firebase products
+    // https://firebase.google.com/docs/android/setup#available-libraries
 }
+
+apply plugin: 'com.google.gms.google-services'
