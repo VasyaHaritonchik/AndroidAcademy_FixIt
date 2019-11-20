@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndroidAcademy_FixIt-FixIt.iml" filepath="$PROJECT_DIR$/AndroidAcademy_FixIt-FixIt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/AndroidAcademy_FixIt-app.iml" filepath="$PROJECT_DIR$/app/AndroidAcademy_FixIt-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/FixIt.iml" filepath="$PROJECT_DIR$/FixIt.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
