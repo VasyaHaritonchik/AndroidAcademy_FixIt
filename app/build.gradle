@@ -55,12 +55,15 @@ dependencies {
     //firebase
     implementation 'com.google.firebase:firebase-auth:19.1.0'
     implementation 'com.google.firebase:firebase-firestore:21.3.0'
+    implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+    implementation 'com.facebook.android:facebook-android-sdk:4.41.0'
+
+    // Other SDKs for desired Firebase products
+    // https://firebase.google.com/docs/android/setup#available-libraries
 
     // recycler
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-
-    // TODO: add SDKs for desired Firebase products
-    // https://firebase.google.com/docs/android/setup#available-libraries
 }
 
 apply plugin: 'com.google.gms.google-services'
