@@ -17,7 +17,16 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="346dp"
+            android:layout_height="205dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Hello!" />
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
