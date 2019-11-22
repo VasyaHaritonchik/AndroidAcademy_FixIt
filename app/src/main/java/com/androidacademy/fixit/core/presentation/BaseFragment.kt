@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import com.androidacademy.fixit.MainActivity
 
@@ -14,8 +13,7 @@ abstract class BaseFragment : Fragment() {
     @LayoutRes
     protected open fun layoutRes(): Int = 0
 
-    @StringRes
-    protected open fun title(): Int = 0
+    protected open fun title(): String = ""
 
     protected open fun initView() {}
 
@@ -32,7 +30,7 @@ abstract class BaseFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as? MainActivity)?.supportActionBar?.title = requireContext().getString(title())
+        (activity as? MainActivity)?.supportActionBar?.title = title()
         initView()
     }
 }

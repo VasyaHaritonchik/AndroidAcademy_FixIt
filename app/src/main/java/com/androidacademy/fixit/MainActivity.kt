@@ -8,7 +8,7 @@ import androidx.appcompat.widget.Toolbar
 import com.androidacademy.fixit.core.App
 import com.androidacademy.fixit.core.presentation.BaseActivity
 import com.androidacademy.fixit.core.presentation.login.view.LoginFragment
-import com.androidacademy.fixit.core.presentation.neworder.view.CreateNewOrderFragment
+import com.androidacademy.fixit.core.presentation.neworder.view.UserChoiceFragment
 import com.androidacademy.fixit.utils.Auth
 import com.androidacademy.fixit.utils.Auth.Companion.RC_SIGN_IN
 import com.androidacademy.fixit.utils.navigation.NavigationUtils.openFragment
@@ -42,6 +42,7 @@ class MainActivity : BaseActivity() {
 
     private fun openFragment(login: Boolean) {
         if (!login) openFragment(LoginFragment(), supportFragmentManager, fragment_container.id, LOGIN_FRAGMENT, false)
+        else openFragment(UserChoiceFragment(), supportFragmentManager, fragment_container.id, CREATE_NEW_ORDER_FRAGMENT, false)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -61,7 +62,7 @@ class MainActivity : BaseActivity() {
         if (isLogged) {
             isLogged = false
             openFragment(
-                CreateNewOrderFragment(),
+                UserChoiceFragment(),
                 supportFragmentManager,
                 fragment_container.id,
                 CREATE_NEW_ORDER_FRAGMENT,

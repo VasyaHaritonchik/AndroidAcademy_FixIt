@@ -67,6 +67,9 @@ dependencies {
     //Dagger
     kapt "com.google.dagger:dagger-compiler:2.17"
     implementation "com.google.dagger:dagger:2.17"
+
+    //RxBind
+    implementation 'com.jakewharton.rxbinding:rxbinding:0.4.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

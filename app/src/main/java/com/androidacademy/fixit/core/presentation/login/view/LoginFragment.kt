@@ -11,7 +11,7 @@ import javax.inject.Inject
 class LoginFragment: BaseFragment() {
 
     override fun layoutRes(): Int = R.layout.fragment_login
-    override fun title(): Int = R.string.welcome
+    override fun title(): String = requireContext().getString(R.string.welcome)
 
     @Inject
     lateinit var auth: Auth

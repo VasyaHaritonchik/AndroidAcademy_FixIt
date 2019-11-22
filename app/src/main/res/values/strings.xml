@@ -6,5 +6,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login">Login</string>
     <string name="welcome">Welcome to FixIt</string>
+    <string name="your_choice">Your choice</string>
     <string name="create_order">Create order</string>
+    <string name="show_orders">Show your orders</string>
+    <string name="what_should_be_done">What should be done?</string>
 </resources>
