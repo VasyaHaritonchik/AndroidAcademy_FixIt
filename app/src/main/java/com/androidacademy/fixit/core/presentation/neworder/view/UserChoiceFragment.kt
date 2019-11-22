@@ -2,7 +2,7 @@ package com.androidacademy.fixit.core.presentation.neworder.view
 
 import com.androidacademy.fixit.R
 import com.androidacademy.fixit.core.presentation.BaseFragment
-import com.androidacademy.fixit.core.presentation.ServiceListFragment
+import com.androidacademy.fixit.core.presentation.servicesList.view.ServiceListFragment
 import com.androidacademy.fixit.utils.navigation.NavigationUtils
 import com.jakewharton.rxbinding.view.RxView
 import kotlinx.android.synthetic.main.fragment_create_new_order.*
