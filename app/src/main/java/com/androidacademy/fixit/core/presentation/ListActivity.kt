@@ -3,6 +3,7 @@ package com.androidacademy.fixit.core.presentation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.androidacademy.fixit.R
+import com.androidacademy.fixit.core.presentation.servicesList.view.ServiceListFragment
 
 class ListActivity : AppCompatActivity() {
 

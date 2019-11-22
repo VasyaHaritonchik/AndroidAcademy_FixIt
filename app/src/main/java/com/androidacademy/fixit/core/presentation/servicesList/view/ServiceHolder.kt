@@ -1,4 +1,4 @@
-package com.androidacademy.fixit.core.presentation
+package com.androidacademy.fixit.core.presentation.servicesList.view
 
 import android.view.View
 import androidx.annotation.LayoutRes

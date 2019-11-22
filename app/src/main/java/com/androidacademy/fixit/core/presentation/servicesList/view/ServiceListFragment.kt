@@ -1,4 +1,4 @@
-package com.androidacademy.fixit.core.presentation
+package com.androidacademy.fixit.core.presentation.servicesList.view
 
 
 import android.os.Bundle
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androidacademy.fixit.R
 import com.androidacademy.fixit.core.network.Service
+import com.androidacademy.fixit.core.presentation.TargetsFragment
 
 
 /**
