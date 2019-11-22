@@ -12,7 +12,7 @@ class Auth {
     )
 
     fun checkAuth(action: (Boolean) -> Unit) {
-        action.invoke(FirebaseAuth.getInstance().currentUser == null)
+        action.invoke(FirebaseAuth.getInstance().currentUser != null)
     }
 
     fun startAuth(activity: BaseActivity) {
