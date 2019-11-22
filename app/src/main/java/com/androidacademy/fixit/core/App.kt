@@ -5,17 +5,19 @@ import com.androidacademy.fixit.core.di.AppComponent
 import com.androidacademy.fixit.core.di.AppModule
 import com.androidacademy.fixit.core.di.DaggerAppComponent
 
-class App: Application() {
+class App : Application() {
 
-    private lateinit var component: AppComponent
 
-    override fun onCreate() {
-        super.onCreate()
-        component = DaggerAppComponent.builder().appModule(AppModule()).build()
+    val appComponent: AppComponent by lazy {
+        DaggerAppComponent.builder().appModule(AppModule()).build()
     }
 
-    fun getComponent(): AppComponent {
-        if (!::component.isInitialized) component = DaggerAppComponent.builder().appModule(AppModule()).build()
-        return component
+    init {
+        instanse = this
+    }
+
+
+    companion object {
+        lateinit var instanse: App
     }
 }
