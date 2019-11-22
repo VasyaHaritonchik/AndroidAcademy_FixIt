@@ -1,70 +1,47 @@
 package com.androidacademy.fixit
 
 
-import android.os.Bundle
 import android.app.Activity
 import android.content.Intent
-
-import com.firebase.ui.auth.AuthUI
+import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
+import com.androidacademy.fixit.core.App
+import com.androidacademy.fixit.core.presentation.BaseActivity
+import com.androidacademy.fixit.core.presentation.login.view.LoginFragment
+import com.androidacademy.fixit.core.presentation.neworder.view.CreateNewOrderFragment
+import com.androidacademy.fixit.utils.Auth
+import com.androidacademy.fixit.utils.Auth.Companion.RC_SIGN_IN
+import com.androidacademy.fixit.utils.navigation.NavigationUtils.openFragment
 import com.firebase.ui.auth.IdpResponse
-import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
-import androidx.appcompat.app.AppCompatActivity
+class MainActivity : BaseActivity() {
 
-class MainActivity : AppCompatActivity() {
-    private val RC_SIGN_IN = 100
+    @Inject
+    lateinit var auth: Auth
+
+    private var isLogged: Boolean = false
+
+    override fun inject() {
+        App.instanse.appComponent.inject(this)
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+    }
 
-        // Choose authentication providers
-        val providers = arrayListOf(
-            AuthUI.IdpConfig.EmailBuilder().build(),
-            AuthUI.IdpConfig.PhoneBuilder().build()
-            )
+    override fun onResume() {
+        super.onResume()
+        (toolbar as? Toolbar)?.let { setSupportActionBar(it) }
+        auth.checkAuth {openFragment(it)}
+    }
 
-            // Create and launch sign-in intent
-        startActivityForResult(
-            AuthUI.getInstance()
-                .createSignInIntentBuilder()
-                .setAvailableProviders(providers)
-                .build(),
-                RC_SIGN_IN)
-
-//        ActionCodeSettings actionCodeSettings = ActionCodeSettings.newBuilder()
-//            .setAndroidPackageName(/* yourPackageName= */ ..., /* installIfNotAvailable= */ true,
-//        /* minimumVersion= */ null)
-//        .setHandleCodeInApp(true) // This must be set to true
-//            .setUrl("https://google.com") // This URL needs to be whitelisted
-//            .build();
-//
-//        startActivityForResult(
-//            AuthUI.getInstance()
-//                .createSignInIntentBuilder()
-//                .setAvailableProviders(Arrays.asList(
-//                    new AuthUI.IdpConfig.EmailBuilder().enableEmailLinkSignIn()
-//                        .setActionCodeSettings(actionCodeSettings).build())
-//                    .build(),
-//                    RC_SIGN_IN);
-
-//        if (AuthUI.canHandleIntent(intent)) {
-//            if (intent.extras == null) {
-//                return
-//            }
-//            val link = intent.extras!!.getString(ExtraConstants.EMAIL_LINK_SIGN_IN)
-//            if (link != null) {
-//                startActivityForResult(
-//                    AuthUI.getInstance()
-//                        .createSignInIntentBuilder()
-//                        .setEmailLink(link)
-//                        .setAvailableProviders(getAvailableProviders())
-//                        .build(),
-//                    RC_SIGN_IN
-//                )
-//            }
-//        }
+    private fun openFragment(login: Boolean) {
+        if (!login) openFragment(LoginFragment(), supportFragmentManager, fragment_container.id, LOGIN_FRAGMENT, false)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -72,19 +49,30 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == RC_SIGN_IN) {
             val response = IdpResponse.fromResultIntent(data)
-
             if (resultCode == Activity.RESULT_OK) {
-                // Successfully signed in
                 val user = FirebaseAuth.getInstance().currentUser
-                // ...
-            } else {
-                // Sign in failed. If response is null the user canceled the
-                // sign-in flow using the back button. Otherwise check
-                // response.getError().getErrorCode() and handle the error.
-                // ...
+                isLogged = true
             }
         }
     }
 
+    override fun onPostResume() {
+        super.onPostResume()
+        if (isLogged) {
+            isLogged = false
+            openFragment(
+                CreateNewOrderFragment(),
+                supportFragmentManager,
+                fragment_container.id,
+                CREATE_NEW_ORDER_FRAGMENT,
+                false)
 
+        }
+
+    }
+
+    companion object {
+        const val LOGIN_FRAGMENT = "login_fragment"
+        const val CREATE_NEW_ORDER_FRAGMENT = "create_order_fragment"
+    }
 }
