@@ -1,5 +1,4 @@
 package com.androidacademy.fixit.utils.recycler
-
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,7 +46,7 @@ abstract class BaseRecyclerAdapter<T>(
 
     override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) {
         with(items[position]) {
-            holder.itemView.setOnClickListener { itemClick(this) }
+            holder.itemView.setOnClickListener { itemClick.invoke(this) }
             holder.itemView.setOnLongClickListener { longItemClick(this) }
             holder.bind(this)
             additionalBindViewHolder(holder, this, position)
