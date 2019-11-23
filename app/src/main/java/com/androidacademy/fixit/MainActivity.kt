@@ -38,12 +38,24 @@ class MainActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         (toolbar as? Toolbar)?.let { setSupportActionBar(it) }
-        auth.checkAuth {openFragment(it)}
+        if (supportFragmentManager.fragments.isNullOrEmpty()) auth.checkAuth { openFragment(it) }
     }
 
     private fun openFragment(login: Boolean) {
-        if (!login) openFragment(LoginFragment(), supportFragmentManager, fragment_container.id, LOGIN_FRAGMENT, false)
-        else openFragment(UserChoiceFragment(), supportFragmentManager, fragment_container.id, CREATE_NEW_ORDER_FRAGMENT, false)
+        if (!login) openFragment(
+            LoginFragment(),
+            supportFragmentManager,
+            fragment_container.id,
+            LOGIN_FRAGMENT,
+            false
+        )
+        else openFragment(
+            UserChoiceFragment(),
+            supportFragmentManager,
+            fragment_container.id,
+            CREATE_NEW_ORDER_FRAGMENT,
+            false
+        )
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -67,7 +79,8 @@ class MainActivity : BaseActivity() {
                 supportFragmentManager,
                 fragment_container.id,
                 CREATE_NEW_ORDER_FRAGMENT,
-                false)
+                false
+            )
 
         }
 

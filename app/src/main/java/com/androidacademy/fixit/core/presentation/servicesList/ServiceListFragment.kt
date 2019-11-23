@@ -10,10 +10,10 @@ import com.androidacademy.fixit.R
 import com.androidacademy.fixit.core.App
 import com.androidacademy.fixit.core.data.ServicesName
 import com.androidacademy.fixit.core.presentation.BaseFragment
-import com.androidacademy.fixit.core.presentation.TargetsFragment
 import com.androidacademy.fixit.core.presentation.servicesList.adapter.ServiceAdapter
 import com.androidacademy.fixit.core.presentation.servicesList.presenter.ServiceListPresenter
 import com.androidacademy.fixit.core.presentation.servicesList.view.ServiceListView
+import com.androidacademy.fixit.core.presentation.targetsList.TargetListFragment
 import com.androidacademy.fixit.utils.navigation.NavigationUtils
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -42,7 +42,7 @@ class ServiceListFragment : BaseFragment(), ServiceListView {
     override fun layoutRes(): Int = R.layout.fragment_service_list
     override fun title(): String = requireContext().getString(R.string.what_should_be_done)
 
-    private val adapter by lazy { ServiceAdapter(itemClick = {click, _ -> click(click)}) }
+    private val adapter by lazy { ServiceAdapter(itemClick = { click, _ -> click(click) }) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -62,7 +62,7 @@ class ServiceListFragment : BaseFragment(), ServiceListView {
 
     private fun click(service: ServicesName) {
         NavigationUtils.openFragment(
-            TargetsFragment.getInstance(service.id, service.name, service.orderPrice),
+            TargetListFragment.getInstance(service.id, service.name, service.orderPrice),
             requireFragmentManager(),
             R.id.fragment_container,
             TARGETS_FRAGMENT,

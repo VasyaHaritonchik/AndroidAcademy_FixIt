@@ -10,4 +10,6 @@
     <string name="create_order">Create order</string>
     <string name="show_orders">Show your orders</string>
     <string name="what_should_be_done">What should be done?</string>
+    <string name="choice_targets_hint">Selected services</string>
+    <string name="next">Next</string>
 </resources>

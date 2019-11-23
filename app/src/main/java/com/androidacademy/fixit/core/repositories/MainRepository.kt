@@ -1,6 +1,7 @@
 package com.androidacademy.fixit.core.repositories
 
 import android.accounts.NetworkErrorException
+import com.androidacademy.fixit.core.data.Order
 import com.androidacademy.fixit.core.data.ServiceTarget
 import com.androidacademy.fixit.core.data.ServicesName
 import com.androidacademy.fixit.utils.ConstApi
@@ -9,7 +10,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot
 import javax.inject.Inject
 
 class MainRepository @Inject constructor() {
-    private val dataBase = FirebaseFirestore.getInstance()
+    private val dataBase by lazy { FirebaseFirestore.getInstance() }
 
     fun getServices(loadCompleted: (List<ServicesName>) -> Unit) {
         dataBase.collection(ConstApi.DataBase.SERVICES_NAME_BASE)
@@ -34,11 +35,20 @@ class MainRepository @Inject constructor() {
             .addOnFailureListener { throw NetworkErrorException() }
     }
 
+    fun setOrder(order: Order) {
+        dataBase.collection(ConstApi.DataBase.ORDERS_BASE)
+            .add(order)
+            .addOnSuccessListener {
+                it
+            }
+            .addOnFailureListener { throw NetworkErrorException() }
+    }
+
     private fun mapServiceTargets(entry: QueryDocumentSnapshot): ServiceTarget {
         val map = entry.data
         return ServiceTarget(
-            price = map["price"] as Long,
-            name = (map["text"] as HashMap<*, *>)["ru"] as String
+            price = map["price"] as? Long ?: 0,
+            name = (map["text"] as HashMap<*, *>)["ru"] as? String ?: ""
         )
     }
 
@@ -46,8 +56,8 @@ class MainRepository @Inject constructor() {
     private fun mapServices(entry: QueryDocumentSnapshot): ServicesName {
         val map = entry.data
         return ServicesName(
-            map["orderPrice"] as Long,
-            (map["text"] as HashMap<*, *>)["ru"] as String,
+            map["orderPrice"] as? Long ?: 0,
+            (map["text"] as HashMap<*, *>)["ru"] as? String ?: "",
             entry.id
         )
     }

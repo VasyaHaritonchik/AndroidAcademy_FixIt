@@ -3,7 +3,7 @@ package com.androidacademy.fixit.core.di
 import com.androidacademy.fixit.MainActivity
 import com.androidacademy.fixit.core.presentation.login.view.LoginFragment
 import com.androidacademy.fixit.core.presentation.servicesList.ServiceListFragment
-import com.androidacademy.fixit.core.presentation.targetsList.view.TargetListFragment
+import com.androidacademy.fixit.core.presentation.targetsList.TargetListFragment
 import dagger.Component
 
 @Component(modules = [AppModule::class])
