@@ -6,7 +6,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.androidacademy.fixit.R
 import com.androidacademy.fixit.core.App
 import com.androidacademy.fixit.core.data.ServicesName
@@ -19,6 +18,7 @@ import com.androidacademy.fixit.utils.navigation.NavigationUtils
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import dagger.Lazy
+import kotlinx.android.synthetic.main.fragment_service_list.*
 import javax.inject.Inject
 
 
@@ -44,27 +44,15 @@ class ServiceListFragment : BaseFragment(), ServiceListView {
 
     private val adapter by lazy { ServiceAdapter(itemClick = ::click) }
 
-    private fun click(service: ServicesName) {
-        NavigationUtils.openFragment(
-            TargetsFragment.getInstance(service.id, service.name),
-            requireFragmentManager(),
-            R.id.fragment_container,
-            TARGETS_FRAGMENT,
-            true
-        )
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         super.onViewCreated(view, savedInstanceState)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rv_list)
-        recyclerView.adapter = adapter
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        rv_list.adapter = adapter
+        rv_list.layoutManager = LinearLayoutManager(context)
         val dividerItemDecoration = DividerItemDecoration(
-            recyclerView.context,
-            (recyclerView.layoutManager as LinearLayoutManager).orientation
+            rv_list.context,
+            (rv_list.layoutManager as LinearLayoutManager).orientation
         )
-        recyclerView.addItemDecoration(dividerItemDecoration)
+        rv_list.addItemDecoration(dividerItemDecoration)
         presenter.getData()
     }
 
@@ -72,6 +60,15 @@ class ServiceListFragment : BaseFragment(), ServiceListView {
         adapter.update(items)
     }
 
+    private fun click(service: ServicesName) {
+        NavigationUtils.openFragment(
+            TargetsFragment.getInstance(service.id, service.name, service.orderPrice),
+            requireFragmentManager(),
+            R.id.fragment_container,
+            TARGETS_FRAGMENT,
+            true
+        )
+    }
 
     companion object {
         private const val TARGETS_FRAGMENT = "targets_fragment"
