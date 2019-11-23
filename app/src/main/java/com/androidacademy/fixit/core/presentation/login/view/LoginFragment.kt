@@ -16,12 +16,9 @@ class LoginFragment: BaseFragment() {
     @Inject
     lateinit var auth: Auth
 
-    override fun inject() {
-        App.instanse.appComponent.inject(this)
-    }
-
     override fun initView() {
         super.initView()
+        App.instanse.appComponent.inject(this)
         login.setOnClickListener { auth.startAuth((requireActivity() as MainActivity)) }
     }
 

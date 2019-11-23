@@ -12,6 +12,7 @@ import com.androidacademy.fixit.core.presentation.neworder.view.UserChoiceFragme
 import com.androidacademy.fixit.utils.Auth
 import com.androidacademy.fixit.utils.Auth.Companion.RC_SIGN_IN
 import com.androidacademy.fixit.utils.navigation.NavigationUtils.openFragment
+import com.androidacademy.fixit.utils.visibility
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
@@ -70,6 +71,11 @@ class MainActivity : BaseActivity() {
 
         }
 
+    }
+
+    fun showLoadingView(show: Boolean) {
+        hide_view.visibility(show)
+        progress.visibility(show)
     }
 
     companion object {
