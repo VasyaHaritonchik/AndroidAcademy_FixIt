@@ -10,7 +10,7 @@ import com.androidacademy.fixit.R
  */
 class TargetsFragment : BaseFragment() {
 
-    override fun layoutRes(): Int = R.layout.fragment_targets
+    override fun layoutRes(): Int = R.layout.fragment_target_list
     override fun title(): String = arguments?.getString(NAME_ID) ?: ""
 
     override fun initView() {
