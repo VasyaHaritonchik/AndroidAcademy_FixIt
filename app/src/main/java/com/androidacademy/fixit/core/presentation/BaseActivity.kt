@@ -1,11 +1,11 @@
 package com.androidacademy.fixit.core.presentation
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.androidacademy.fixit.R
 import com.androidacademy.fixit.core.App
+import com.arellomobile.mvp.MvpAppCompatActivity
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : MvpAppCompatActivity() {
 
     protected val app = App()
 
@@ -15,9 +15,5 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         inject()
-    }
-
-    override fun onResume() {
-        super.onResume()
     }
 }

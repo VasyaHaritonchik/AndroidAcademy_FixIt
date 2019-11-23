@@ -70,6 +70,12 @@ dependencies {
 
     //RxBind
     implementation 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+
+    //Moxy
+    implementation "tech.schoolhelper:moxy-x:1.7.0"
+    implementation 'tech.schoolhelper:moxy-x-androidx:1.7.0'
+    kapt "tech.schoolhelper:moxy-x-compiler:1.7.0"
+
 }
 
 apply plugin: 'com.google.gms.google-services'
