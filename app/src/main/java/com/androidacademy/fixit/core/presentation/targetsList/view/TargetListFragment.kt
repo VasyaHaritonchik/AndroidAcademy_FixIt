@@ -48,11 +48,11 @@ class TargetListFragment : BaseFragment() {
                 Target(2, "lol", false)
             )
 
-        fun getInstance(id: Long, title: String): BaseFragment {
+        fun getInstance(id: String, title: String): BaseFragment {
             val bundle = Bundle(1)
             val fragment =
                 TargetListFragment()
-            bundle.putLong(ARG_ID, id)
+            bundle.putString(ARG_ID, id)
             bundle.putString(NAME_ID, title)
             fragment.arguments = bundle
             return fragment
