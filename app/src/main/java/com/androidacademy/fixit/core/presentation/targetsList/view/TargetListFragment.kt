@@ -47,7 +47,7 @@ class TargetListFragment : BaseFragment() {
         val list =
             listOf(
                 Target(0, "работы", false),
-                Target(1, "eee", false),
+                Target(1, "pop", false),
                 Target(2, "lol", false)
             )
 
