@@ -2,7 +2,6 @@ package com.androidacademy.fixit.core.presentation.servicesList.view
 
 import android.view.View
 import com.androidacademy.fixit.core.network.Service
-import com.androidacademy.fixit.core.presentation.servicesList.view.ServiceHolder
 import com.androidacademy.fixit.utils.recycler.BaseRecyclerAdapter
 import com.androidacademy.fixit.utils.recycler.BaseViewHolder
 

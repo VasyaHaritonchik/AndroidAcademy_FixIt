@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.androidacademy.fixit.R
 import com.androidacademy.fixit.core.network.Service
 import com.androidacademy.fixit.core.presentation.BaseFragment
-import com.androidacademy.fixit.core.presentation.TargetsFragment
+import com.androidacademy.fixit.core.presentation.targetsList.view.TargetListFragment
 import com.androidacademy.fixit.utils.navigation.NavigationUtils
 
 
@@ -24,7 +24,7 @@ class ServiceListFragment : BaseFragment() {
 
     private fun click(service: Service) {
         NavigationUtils.openFragment(
-            TargetsFragment.getInstance(service.id, service.name),
+            TargetListFragment.getInstance(service.id, service.name),
             requireFragmentManager(),
             R.id.fragment_container,
             TARGETS_FRAGMENT,
