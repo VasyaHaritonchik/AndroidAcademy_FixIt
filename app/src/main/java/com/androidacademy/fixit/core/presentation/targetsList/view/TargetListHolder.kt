@@ -7,6 +7,7 @@ import com.androidacademy.fixit.core.data.Target
 import com.androidacademy.fixit.utils.recycler.BaseViewHolder
 import kotlinx.android.synthetic.main.target_list_item.view.*
 
+
 class TargetListHolder(itemView: View) : BaseViewHolder<Target>(itemView) {
     override fun bind(item: Target) {
         itemView.target_name.text = item.name

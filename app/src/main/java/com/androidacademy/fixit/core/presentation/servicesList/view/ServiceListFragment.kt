@@ -39,7 +39,7 @@ class ServiceListFragment : BaseFragment() {
         recyclerView.adapter =
             ServiceAdapter(
                 list,
-                ::click
+                { click, position -> click(click) }
             )
         recyclerView.layoutManager = LinearLayoutManager(context)
         val dividerItemDecoration = DividerItemDecoration(
