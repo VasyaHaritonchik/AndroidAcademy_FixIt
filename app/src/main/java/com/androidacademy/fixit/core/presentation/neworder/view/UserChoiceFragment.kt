@@ -2,6 +2,7 @@ package com.androidacademy.fixit.core.presentation.neworder.view
 
 import com.androidacademy.fixit.R
 import com.androidacademy.fixit.core.presentation.BaseFragment
+import com.androidacademy.fixit.core.presentation.order.OrderFragment
 import com.androidacademy.fixit.core.presentation.servicesList.ServiceListFragment
 import com.androidacademy.fixit.utils.navigation.NavigationUtils
 import com.jakewharton.rxbinding.view.RxView
@@ -30,7 +31,15 @@ class UserChoiceFragment: BaseFragment() {
                             true
                             )
                     }
-                    SHOW_ORDERS -> {}
+                    SHOW_ORDERS -> {
+                        NavigationUtils.openFragment(
+                            OrderFragment.newInstance(),
+                            requireFragmentManager(),
+                            R.id.fragment_container,
+                            SHOW_ORDERS_FRAGMENT,
+                            true
+                        )
+                    }
                 }
             },{it.printStackTrace()})
     }

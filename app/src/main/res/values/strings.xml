@@ -12,4 +12,7 @@
     <string name="what_should_be_done">What should be done?</string>
     <string name="choice_targets_hint">Selected services</string>
     <string name="next">Next</string>
+    <string name="your_orders">Your orders</string>
+    <string name="done">Done</string>
+    <string name="be_in_progress">Be in progress</string>
 </resources>

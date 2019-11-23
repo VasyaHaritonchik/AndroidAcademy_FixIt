@@ -5,6 +5,7 @@ import com.androidacademy.fixit.core.data.Order
 import com.androidacademy.fixit.core.data.ServiceTarget
 import com.androidacademy.fixit.core.data.ServicesName
 import com.androidacademy.fixit.utils.ConstApi
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QueryDocumentSnapshot
 import javax.inject.Inject
@@ -42,6 +43,40 @@ class MainRepository @Inject constructor() {
                 success.invoke()
             }
             .addOnFailureListener { throw NetworkErrorException() }
+    }
+
+    fun getOrder(loadCompleted: (List<Order>) -> Unit) {
+        dataBase.collection(ConstApi.DataBase.ORDERS_BASE)
+            .whereEqualTo("userId", FirebaseAuth.getInstance().currentUser?.uid)
+            .get()
+            .addOnSuccessListener {
+                val listItems = mutableListOf<Order>()
+                it.forEach { entry -> listItems.add(mapOrderFromFirebase(entry)) }
+                loadCompleted.invoke(listItems)
+            }
+            .addOnFailureListener { throw NetworkErrorException() }
+    }
+
+    private fun mapOrderFromFirebase(entry: QueryDocumentSnapshot) : Order {
+        val map = entry.data
+        val address = map["address"] as? HashMap<*, *> ?: throw NetworkErrorException()
+        return Order(
+            address = Order.Address(
+                apartments = address["apartments"] as? Long ?: 0,
+                building = address["building"] as? Long ?: 0,
+                floor = address["floor"] as? Long ?: 0,
+                house = address["house"] as? Long ?: 0,
+                porch = address["porch"] as? Long ?: 0,
+                street = address["street"] as? String ?: ""
+            ),
+            dataTime = map["dataTime"] as? String ?: "",
+            finalPrice = map["finalPrice"] as? Long ?: 0,
+            serviceRef = map["serviceRef"] as? String ?: "",
+            isCompleted = map["completed"] as? Boolean ?: false,
+            serviceTargets = map["serviceTargets"] as? List<String> ?: listOf(),
+            isProcessing = map["processing"] as? Boolean ?: false,
+            userId = map["userId"] as? String ?: ""
+        )
     }
 
     private fun mapServiceTargets(entry: QueryDocumentSnapshot): ServiceTarget {
