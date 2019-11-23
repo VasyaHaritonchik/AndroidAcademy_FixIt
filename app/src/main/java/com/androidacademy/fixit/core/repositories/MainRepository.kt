@@ -37,8 +37,8 @@ class MainRepository @Inject constructor() {
     private fun mapServiceTargets(entry: QueryDocumentSnapshot): ServiceTarget {
         val map = entry.data
         return ServiceTarget(
-            price = map["price"] as Long,
-            name = (map["text"] as HashMap<*, *>)["ru"] as String
+            price = map["price"] as? Long ?: 0,
+            name = (map["text"] as HashMap<*, *>)["ru"] as? String ?: ""
         )
     }
 
@@ -46,8 +46,8 @@ class MainRepository @Inject constructor() {
     private fun mapServices(entry: QueryDocumentSnapshot): ServicesName {
         val map = entry.data
         return ServicesName(
-            map["orderPrice"] as Long,
-            (map["text"] as HashMap<*, *>)["ru"] as String,
+            map["orderPrice"] as? Long ?: 0,
+            (map["text"] as HashMap<*, *>)["ru"] as? String ?: "",
             entry.id
         )
     }
