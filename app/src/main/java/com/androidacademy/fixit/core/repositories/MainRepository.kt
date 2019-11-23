@@ -1,6 +1,7 @@
 package com.androidacademy.fixit.core.repositories
 
 import android.accounts.NetworkErrorException
+import com.androidacademy.fixit.core.data.Order
 import com.androidacademy.fixit.core.data.ServiceTarget
 import com.androidacademy.fixit.core.data.ServicesName
 import com.androidacademy.fixit.utils.ConstApi
@@ -9,7 +10,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot
 import javax.inject.Inject
 
 class MainRepository @Inject constructor() {
-    private val dataBase = FirebaseFirestore.getInstance()
+    private val dataBase by lazy { FirebaseFirestore.getInstance() }
 
     fun getServices(loadCompleted: (List<ServicesName>) -> Unit) {
         dataBase.collection(ConstApi.DataBase.SERVICES_NAME_BASE)
@@ -30,6 +31,15 @@ class MainRepository @Inject constructor() {
                 val listItems = mutableListOf<ServiceTarget>()
                 it.forEach {entry -> listItems.add(mapServiceTargets(entry))}
                 loadCompleted.invoke(listItems)
+            }
+            .addOnFailureListener { throw NetworkErrorException() }
+    }
+
+    fun setOrder(order: Order) {
+        dataBase.collection(ConstApi.DataBase.ORDERS_BASE)
+            .add(order)
+            .addOnSuccessListener {
+                it
             }
             .addOnFailureListener { throw NetworkErrorException() }
     }

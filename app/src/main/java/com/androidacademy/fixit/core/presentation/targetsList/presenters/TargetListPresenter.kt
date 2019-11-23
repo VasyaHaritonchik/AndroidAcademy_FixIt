@@ -1,5 +1,6 @@
 package com.androidacademy.fixit.core.presentation.targetsList.presenters
 
+import com.androidacademy.fixit.core.data.Order
 import com.androidacademy.fixit.core.data.ServiceTarget
 import com.androidacademy.fixit.core.presentation.targetsList.view.TargetListView
 import com.androidacademy.fixit.core.repositories.MainRepository
@@ -28,5 +29,20 @@ class TargetListPresenter @Inject constructor(
     private fun update(items: List<ServiceTarget>) {
         viewState.updateItems(items)
         viewState.showLoadingView(false)
+    }
+
+    fun next() {
+        repository.setOrder(
+            Order(
+                Order.Address(0,0,0,0,0,""),
+                "sgsrfgsr",
+                20,
+                "",
+                listOf(),
+                false,
+                false,
+                "fsaeg"
+            )
+        )
     }
 }

@@ -44,6 +44,7 @@ class TargetListFragment : BaseFragment(), TargetListView {
     override fun initView() {
         super.initView()
         presenter.getData(arguments?.getString(ARG_ID, "") ?: "")
+        next_step.setOnClickListener { presenter.next() }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
