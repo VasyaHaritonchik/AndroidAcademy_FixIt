@@ -66,11 +66,15 @@ class AddressFragment : BaseFragment(), AddressView {
     }
 
     override fun success() {
-        val alertDialog = AlertDialog.Builder(requireContext())
+        AlertDialog.Builder(requireContext())
             .setTitle("Принято!")
             .setMessage("Ваш заказ направлен свободному мастеру.")
-//            .setPositiveButton(android.R.string.ok) { _, {} }
+            .setPositiveButton(android.R.string.ok) { _, _ -> openOrders() }
             .show()
+    }
+
+    private fun openOrders(){
+
     }
 
 }
