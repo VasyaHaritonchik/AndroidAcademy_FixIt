@@ -42,7 +42,7 @@ class ServiceListFragment : BaseFragment(), ServiceListView {
     override fun layoutRes(): Int = R.layout.fragment_service_list
     override fun title(): String = requireContext().getString(R.string.what_should_be_done)
 
-    private val adapter by lazy { ServiceAdapter(itemClick = ::click) }
+    private val adapter by lazy { ServiceAdapter(itemClick = {click, _ -> click(click)}) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
