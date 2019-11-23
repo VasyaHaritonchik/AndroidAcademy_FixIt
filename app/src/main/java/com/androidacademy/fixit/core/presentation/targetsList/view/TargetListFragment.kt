@@ -3,12 +3,12 @@ package com.androidacademy.fixit.core.presentation.targetsList.view
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.androidacademy.fixit.R
+import com.androidacademy.fixit.core.data.Target
 import com.androidacademy.fixit.core.presentation.BaseFragment
 
 /**
@@ -19,19 +19,22 @@ class TargetListFragment : BaseFragment() {
     override fun layoutRes(): Int = R.layout.fragment_target_list
     override fun title(): String = arguments?.getString(NAME_ID) ?: ""
 
+    val targetListAdapter by lazy { TargetListAdapter(
+        list,
+        ::click
+    ) }
+
     private fun click(target: Target) {
-        Toast.makeText(context,"this is toast message", Toast.LENGTH_SHORT).show()
+        target.isSelected = !target.isSelected;
+
+        targetListAdapter.notifyDataSetChanged();
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
         val recyclerView = view.findViewById<RecyclerView>(R.id.target_list_view)
-        recyclerView.adapter =
-            TargetListAdapter(
-                list,
-                ::click
-            )
+        recyclerView.adapter = targetListAdapter
         recyclerView.layoutManager = LinearLayoutManager(context)
         val dividerItemDecoration = DividerItemDecoration(
             recyclerView.context,

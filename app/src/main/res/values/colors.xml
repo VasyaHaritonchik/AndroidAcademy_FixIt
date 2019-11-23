@@ -6,4 +6,5 @@
     <color name="items_color">#61646F</color>
     <color name="grey">#C4C4C4</color>
     <color name="primaryTextColor">#797979</color>
+    <color name="action_color">#7094E5</color>
 </resources>
