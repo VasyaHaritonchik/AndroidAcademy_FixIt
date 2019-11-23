@@ -1,18 +1,17 @@
 <resources>
-    <string name="app_name">FixIt</string>
+    <string name="app_name">Fixit</string>
     <string name="arrow"><![CDATA[>]]></string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="login">Login</string>
-    <string name="welcome">Welcome to FixIt</string>
-    <string name="your_choice">Your choice</string>
-    <string name="create_order">Create order</string>
-    <string name="show_orders">Show your orders</string>
-    <string name="what_should_be_done">What should be done?</string>
-    <string name="choice_targets_hint">Selected services</string>
-    <string name="next">Next</string>
-    <string name="your_orders">Your orders</string>
-    <string name="done">Done</string>
+    <string name="login">Логин</string>
+    <string name="welcome">Добро пожаловать в Fixit</string>
+    <string name="your_choice">Ваш выбор</string>
+    <string name="create_order">Создать заказ</string>
+    <string name="show_orders">Просмотреть заказы</string>
+    <string name="what_should_be_done">Что нужно сделать?</string>
+    <string name="choice_targets_hint">Выбрано услуг</string>
+    <string name="next">Далее</string>
+    <string name="your_orders">Заказы</string>
+    <string name="done">Готово</string>
     <string name="be_in_progress">Be in progress</string>
 </resources>
