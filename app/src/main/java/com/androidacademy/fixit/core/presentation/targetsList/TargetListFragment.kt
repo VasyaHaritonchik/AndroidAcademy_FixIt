@@ -8,9 +8,11 @@ import com.androidacademy.fixit.R
 import com.androidacademy.fixit.core.App
 import com.androidacademy.fixit.core.data.ServiceTarget
 import com.androidacademy.fixit.core.presentation.BaseFragment
+import com.androidacademy.fixit.core.presentation.address.AddressFragment
 import com.androidacademy.fixit.core.presentation.targetsList.adapter.TargetListAdapter
 import com.androidacademy.fixit.core.presentation.targetsList.presenters.TargetListPresenter
 import com.androidacademy.fixit.core.presentation.targetsList.view.TargetListView
+import com.androidacademy.fixit.utils.navigation.NavigationUtils
 import com.androidacademy.fixit.utils.visibility
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
@@ -43,16 +45,11 @@ class TargetListFragment : BaseFragment(), TargetListView {
 
     override fun initView() {
         super.initView()
+
+        target_list_view.adapter = targetListAdapter
+        target_list_view.layoutManager = LinearLayoutManager(context)
         presenter.getData(arguments?.getString(ARG_ID, "") ?: "")
-        next_step.setOnClickListener { presenter.next() }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val recyclerView = view.findViewById<RecyclerView>(R.id.target_list_view)
-        recyclerView.adapter = targetListAdapter
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        next_step.setOnClickListener { presenter.next(targetListAdapter.getItems()) }
     }
 
     override fun updateItems(items: List<ServiceTarget>) {
@@ -68,6 +65,16 @@ class TargetListFragment : BaseFragment(), TargetListView {
 
     }
 
+    override fun openChoiceAddress(fragment: BaseFragment) {
+        NavigationUtils.openFragment(
+            fragment,
+            requireFragmentManager(),
+            R.id.fragment_container,
+            ADDRESS_FRAGMENT,
+            true
+        )
+    }
+
     private fun click(target: ServiceTarget, position: Int) {
         target.isSelected = !target.isSelected
         targetListAdapter.notifyItemChanged(position)
@@ -78,6 +85,7 @@ class TargetListFragment : BaseFragment(), TargetListView {
         private const val ARG_ID = "ARG_ID"
         private const val NAME_ID = "NAME_ID"
         private const val WORKER_PRICE = "WORKER_PRICE"
+        private const val ADDRESS_FRAGMENT = "ADDRESS_FRAGMENT"
 
         fun getInstance(id: String, title: String, workerPrice: Long): BaseFragment {
             return TargetListFragment().apply {

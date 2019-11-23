@@ -1,6 +1,7 @@
 package com.androidacademy.fixit.core.repositories
 
 import android.accounts.NetworkErrorException
+import com.androidacademy.fixit.core.data.Address
 import com.androidacademy.fixit.core.data.Order
 import com.androidacademy.fixit.core.data.ServiceTarget
 import com.androidacademy.fixit.core.data.ServicesName
@@ -61,7 +62,7 @@ class MainRepository @Inject constructor() {
         val map = entry.data
         val address = map["address"] as? HashMap<*, *> ?: throw NetworkErrorException()
         return Order(
-            address = Order.Address(
+            address = Address(
                 apartments = address["apartments"] as? Long ?: 0,
                 building = address["building"] as? Long ?: 0,
                 floor = address["floor"] as? Long ?: 0,

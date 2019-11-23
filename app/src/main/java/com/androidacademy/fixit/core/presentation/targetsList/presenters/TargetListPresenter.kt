@@ -3,6 +3,7 @@ package com.androidacademy.fixit.core.presentation.targetsList.presenters
 import com.androidacademy.fixit.core.data.Address
 import com.androidacademy.fixit.core.data.Order
 import com.androidacademy.fixit.core.data.ServiceTarget
+import com.androidacademy.fixit.core.presentation.address.AddressFragment
 import com.androidacademy.fixit.core.presentation.targetsList.view.TargetListView
 import com.androidacademy.fixit.core.repositories.MainRepository
 import com.arellomobile.mvp.InjectViewState
@@ -32,18 +33,13 @@ class TargetListPresenter @Inject constructor(
         viewState.showLoadingView(false)
     }
 
-    fun next() {
-        repository.setOrder(
-            Order(
-                Address(0, 0, 0, 0, 0, ""),
-                "sgsrfgsr",
-                20,
-                "",
-                listOf(),
-                false,
-                false,
-                "fsaeg"
-            )
-        )
+    fun next(items: List<ServiceTarget>) {
+        var price: Long = 0
+        val list = mutableListOf<String>()
+        items.filter { it.isSelected }.forEach{
+            price +=it.price
+            list.add(it.name)
+        }
+        viewState.openChoiceAddress(AddressFragment.getInstance(price, list as ArrayList<String>))
     }
 }

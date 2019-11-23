@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 
 import com.androidacademy.fixit.R
 import com.androidacademy.fixit.core.App
@@ -38,13 +39,8 @@ class AddressFragment : BaseFragment(), AddressView {
         return daggerPresenter.get()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_address, container, false)
-    }
+    override fun layoutRes(): Int = R.layout.fragment_address
+    override fun title(): String = requireContext().getString(R.string.welcome)
 
     override fun initView() {
         super.initView()
@@ -60,7 +56,7 @@ class AddressFragment : BaseFragment(), AddressView {
         private const val ARG_SERVICE_TARGETS = "ARG_SERVICE_TARGET"
 
         fun getInstance(price: Long, serviceTargets: ArrayList<String>): BaseFragment {
-            return TargetListFragment().apply {
+            return AddressFragment().apply {
                 val bundle = Bundle()
                 bundle.putLong(ARG_PRICE, price)
                 bundle.putStringArrayList(ARG_SERVICE_TARGETS, serviceTargets)
@@ -70,6 +66,11 @@ class AddressFragment : BaseFragment(), AddressView {
     }
 
     override fun success() {
-        TODO("go to order screen") //To change body of created functions use File | Settings | File Templates.
+        val alertDialog = AlertDialog.Builder(requireContext())
+            .setTitle("Принято!")
+            .setMessage("Ваш заказ направлен свободному мастеру.")
+//            .setPositiveButton(android.R.string.ok) { _, {} }
+            .show()
     }
+
 }
