@@ -1,5 +1,6 @@
 package com.androidacademy.fixit.core.presentation.targetsList.presenters
 
+import com.androidacademy.fixit.core.data.Address
 import com.androidacademy.fixit.core.data.Order
 import com.androidacademy.fixit.core.data.ServiceTarget
 import com.androidacademy.fixit.core.presentation.targetsList.view.TargetListView
@@ -34,7 +35,7 @@ class TargetListPresenter @Inject constructor(
     fun next() {
         repository.setOrder(
             Order(
-                Order.Address(0,0,0,0,0,""),
+                Address(0, 0, 0, 0, 0, ""),
                 "sgsrfgsr",
                 20,
                 "",

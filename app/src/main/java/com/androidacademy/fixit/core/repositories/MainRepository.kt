@@ -35,11 +35,11 @@ class MainRepository @Inject constructor() {
             .addOnFailureListener { throw NetworkErrorException() }
     }
 
-    fun setOrder(order: Order) {
+    fun setOrder(order: Order, success: () -> Unit) {
         dataBase.collection(ConstApi.DataBase.ORDERS_BASE)
             .add(order)
             .addOnSuccessListener {
-                it
+                success.invoke()
             }
             .addOnFailureListener { throw NetworkErrorException() }
     }
