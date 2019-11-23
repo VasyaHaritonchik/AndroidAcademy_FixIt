@@ -16,8 +16,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding"
+        android:gravity="center"
         android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/text_12"
+        android:textSize="@dimen/text_14"
         app:layout_constraintBottom_toTopOf="@id/building"
         app:layout_constraintEnd_toStartOf="@id/guide_66"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,8 +29,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding"
+        android:gravity="center"
         android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/text_12"
+        android:textSize="@dimen/text_14"
         app:layout_constraintBottom_toTopOf="@id/house"
         app:layout_constraintEnd_toStartOf="@id/guide_66"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +42,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding"
+        android:gravity="center"
         android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/text_12"
+        android:textSize="@dimen/text_14"
         app:layout_constraintBottom_toTopOf="@id/porch"
         app:layout_constraintEnd_toStartOf="@id/guide_66"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,8 +55,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding"
+        android:gravity="center"
         android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/text_12"
+        android:textSize="@dimen/text_14"
         app:layout_constraintBottom_toTopOf="@id/floor"
         app:layout_constraintEnd_toStartOf="@id/guide_66"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,8 +68,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding"
+        android:gravity="center"
         android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/text_12"
+        android:textSize="@dimen/text_14"
         app:layout_constraintBottom_toTopOf="@id/apartments"
         app:layout_constraintEnd_toStartOf="@id/guide_66"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,8 +81,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding"
+        android:gravity="center"
         android:textColor="@color/primaryTextColor"
-        android:textSize="@dimen/text_12"
+        android:textSize="@dimen/text_14"
         app:layout_constraintEnd_toStartOf="@id/guide_66"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/floor" />
@@ -111,12 +117,12 @@
         android:layout_marginTop="@dimen/padding"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/text_14"
-        app:layout_constraintStart_toEndOf="@id/guide_66"
+        app:layout_constraintBottom_toTopOf="@id/date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/guide_66"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/date"/>
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/date"
@@ -125,10 +131,10 @@
         android:layout_marginTop="@dimen/padding"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/text_14"
-        app:layout_constraintStart_toEndOf="@id/guide_66"
+        app:layout_constraintBottom_toTopOf="@id/status"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/price"
-        app:layout_constraintBottom_toTopOf="@id/status"/>
+        app:layout_constraintStart_toEndOf="@id/guide_66"
+        app:layout_constraintTop_toBottomOf="@id/price" />
 
     <TextView
         android:id="@+id/status"
@@ -137,9 +143,9 @@
         android:layout_marginTop="@dimen/padding"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/text_14"
-        app:layout_constraintTop_toBottomOf="@id/date"
         app:layout_constraintBottom_toTopOf="@id/barrier"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guide_66"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

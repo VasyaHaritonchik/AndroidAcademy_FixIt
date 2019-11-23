@@ -13,7 +13,13 @@ object NavigationUtils {
         addStack: Boolean
     ) {
         val transactionManager = fragmentManager.beginTransaction()
-        if (addStack) transactionManager.addToBackStack(tag)
+        if (addStack) transactionManager.addToBackStack(tag) else transactionManager.addToBackStack(null)
         transactionManager.replace(container, fragment, tag).commit()
+    }
+
+    fun clearBackStack(fragmentManager: FragmentManager) {
+        for (i in 0 until fragmentManager.backStackEntryCount - 1) {
+            fragmentManager.popBackStack()
+        }
     }
 }

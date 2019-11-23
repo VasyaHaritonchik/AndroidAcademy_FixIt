@@ -48,6 +48,6 @@ class OrderFragment : BaseFragment(), OrderView {
 
     companion object {
         fun newInstance(): OrderFragment =
-            OrderFragment().apply {  }
+            OrderFragment().apply { }
     }
 }

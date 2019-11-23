@@ -1,7 +1,5 @@
 package com.androidacademy.fixit.core.presentation.targetsList.presenters
 
-import com.androidacademy.fixit.core.data.Address
-import com.androidacademy.fixit.core.data.Order
 import com.androidacademy.fixit.core.data.ServiceTarget
 import com.androidacademy.fixit.core.presentation.address.AddressFragment
 import com.androidacademy.fixit.core.presentation.targetsList.view.TargetListView

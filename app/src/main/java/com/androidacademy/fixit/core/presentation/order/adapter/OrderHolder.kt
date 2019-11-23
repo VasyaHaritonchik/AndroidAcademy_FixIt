@@ -27,9 +27,9 @@ class OrderHolder(
                 item.isProcessing -> context.getString(R.string.done)
                 else -> ""
             }
-            val ordersText = ""
+            var ordersText = ""
             item.serviceTargets.forEach {
-                ordersText.plus("${it}, ")
+                ordersText += "${it}, "
             }
             orders.text = ordersText
         }

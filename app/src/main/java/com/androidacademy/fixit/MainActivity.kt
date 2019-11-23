@@ -24,6 +24,7 @@ class MainActivity : BaseActivity() {
     lateinit var auth: Auth
 
     private var isLogged: Boolean = false
+    var onBack: () -> Unit = {}
 
     override fun inject() {
         App.instanse.appComponent.inject(this)
@@ -94,5 +95,10 @@ class MainActivity : BaseActivity() {
     companion object {
         const val LOGIN_FRAGMENT = "login_fragment"
         const val CREATE_NEW_ORDER_FRAGMENT = "create_order_fragment"
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        onBack()
     }
 }
