@@ -2,12 +2,14 @@ package com.androidacademy.fixit.core.di
 
 import com.androidacademy.fixit.MainActivity
 import com.androidacademy.fixit.core.presentation.login.view.LoginFragment
-import com.androidacademy.fixit.core.presentation.neworder.view.UserChoiceFragment
+import com.androidacademy.fixit.core.presentation.servicesList.ServiceListFragment
+import com.androidacademy.fixit.core.presentation.targetsList.view.TargetListFragment
 import dagger.Component
 
 @Component(modules = [AppModule::class])
 interface AppComponent {
     fun inject(activity: MainActivity)
     fun inject(fragment: LoginFragment)
-    fun inject(fragment: UserChoiceFragment)
+    fun inject(fragment: ServiceListFragment)
+    fun inject(fragment: TargetListFragment)
 }

@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.fragment.app.Fragment
 import com.androidacademy.fixit.MainActivity
+import com.arellomobile.mvp.MvpAppCompatFragment
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment : MvpAppCompatFragment(), BaseView {
 
     @LayoutRes
     protected open fun layoutRes(): Int = 0
@@ -17,14 +17,11 @@ abstract class BaseFragment : Fragment() {
 
     protected open fun initView() {}
 
-    protected open fun inject() {}
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        inject()
         return inflater.inflate(layoutRes(), container, false)
     }
 
@@ -32,5 +29,9 @@ abstract class BaseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as? MainActivity)?.supportActionBar?.title = title()
         initView()
+    }
+
+    override fun showLoadingView(show: Boolean) {
+        (activity as? MainActivity)?.showLoadingView(show)
     }
 }

@@ -10,18 +10,24 @@ import com.androidacademy.fixit.R
  */
 class TargetsFragment : BaseFragment() {
 
-    override fun layoutRes(): Int = R.layout.fragment_targets
+    override fun layoutRes(): Int = R.layout.fragment_target_list
     override fun title(): String = arguments?.getString(NAME_ID) ?: ""
+
+    override fun initView() {
+        super.initView()
+    }
 
     companion object {
         private const val ARG_ID = "ARG_ID"
         private const val NAME_ID = "NAME_ID"
-        fun getInstance(id: Long, title: String): BaseFragment {
+        private const val WORKER_PRICE = "WORKER_PRICE"
+        fun getInstance(id: String, title: String, workerPrice: Long): BaseFragment {
             val bundle = Bundle(1)
             val fragment =
                 TargetsFragment()
-            bundle.putLong(ARG_ID, id)
+            bundle.putString(ARG_ID, id)
             bundle.putString(NAME_ID, title)
+            bundle.putLong(WORKER_PRICE, workerPrice)
             fragment.arguments = bundle
             return fragment
         }
