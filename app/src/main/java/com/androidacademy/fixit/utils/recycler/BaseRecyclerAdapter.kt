@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 abstract class BaseRecyclerAdapter<T>(
     items: List<T> = listOf(),
-    private val itemClick: (T) -> Unit = {},
+    private val itemClick: (T, Int) -> Unit = { _, _ -> },
     private val longItemClick: (T) -> Boolean = { false }
 ) : RecyclerView.Adapter<BaseViewHolder<T>>() {
 
@@ -46,7 +46,7 @@ abstract class BaseRecyclerAdapter<T>(
 
     override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) {
         with(items[position]) {
-            holder.itemView.setOnClickListener { itemClick.invoke(this) }
+            holder.itemView.setOnClickListener { itemClick.invoke(this, position) }
             holder.itemView.setOnLongClickListener { longItemClick(this) }
             holder.bind(this)
             additionalBindViewHolder(holder, this, position)
