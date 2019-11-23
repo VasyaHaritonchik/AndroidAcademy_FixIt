@@ -14,7 +14,6 @@ import com.androidacademy.fixit.core.presentation.TargetsFragment
 import com.androidacademy.fixit.core.presentation.servicesList.adapter.ServiceAdapter
 import com.androidacademy.fixit.core.presentation.servicesList.presenter.ServiceListPresenter
 import com.androidacademy.fixit.core.presentation.servicesList.view.ServiceListView
-import com.androidacademy.fixit.core.presentation.targetsList.view.TargetL  istFragment
 import com.androidacademy.fixit.utils.navigation.NavigationUtils
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
